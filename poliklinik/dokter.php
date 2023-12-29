@@ -146,6 +146,11 @@ if (isset($_GET['id'])) {
                                 Pasien
                             </a>
                         </li>
+                        <li>
+                            <a class="dropdown-item" href="obat.php?page=obat">
+                                Obat
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

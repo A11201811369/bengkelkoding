@@ -98,11 +98,14 @@
                     echo '<a class="nav-link" href="periksa.php?page=periksa">Periksa</a>';
                     echo '</li>';
                     echo '<li class="nav-item">';
+                    echo '<a class="nav-link" href="obat.php">Obat</a>';
+                    echo '</li>';
                     echo '<a class="nav-link" href="logout.php">Logout</a>';
                     echo '</li>';
                 }
                 ?>
             </ul>
+            
             <?php
             if (!isset($_SESSION['username'])) {
                 // If the user is not logged in, display "Register" and "Login" options to the top-right

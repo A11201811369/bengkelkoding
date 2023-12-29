@@ -117,6 +117,11 @@ session_start();
                                 Pasien
                             </a>
                         </li>
+                        <li>
+                            <a class="dropdown-item" href="obat.php?page=obat">
+                                Obat
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -203,6 +208,7 @@ session_start();
                 ?>
             </select>
         </div>
+        
         <div class="col mb-2">
             <label for="inputNo_hp" class="form-label fw-bold">
                 Tanggal Periksa
@@ -215,12 +221,7 @@ session_start();
             </label>
             <input type="text" class="form-control" name="catatan" id="inputCatatan" placeholder="Catatan" value="<?php echo $catatan; ?>">
         </div>
-        <div class="col mb-2">
-            <label for="inputNo_hp" class="form-label fw-bold">
-                Obat
-            </label>
-            <input type="text" class="form-control" name="obat" id="inputObat" placeholder="Obat" value="<?php echo $obat; ?>">
-        </div>
+
         <div class="col">
             <button type="submit" class="btn btn-primary rounded-pill px-3" name="simpan">Simpan</button>
         </div>
@@ -234,7 +235,7 @@ session_start();
             <th scope="col">Nama Dokter</th>
             <th scope="col">Tanggal Periksa</th>
             <th scope="col">Catatan</th>
-            <th scope="col">Obat</th>
+          
             <th scope="col">Aksi</th>
         </tr>
         </thead>
@@ -250,10 +251,10 @@ session_start();
                 <td><?php echo $data['nama_dokter'] ?></td>
                 <td><?php echo $data['tgl_periksa'] ?></td>
                 <td><?php echo $data['catatan'] ?></td>
-                <td><?php echo $data['obat'] ?></td>
                 <td>
                     <a class="btn btn-success rounded-pill px-3" href="periksa.php?page=periksa&id=<?php echo $data['id'] ?>">Ubah</a>
                     <a class="btn btn-danger rounded-pill px-3" href="periksa.php?page=periksa&id=<?php echo $data['id'] ?>&aksi=hapus">Hapus</a>
+                    <a class="btn btn-primary rounded-pill px-3" href="detail_periksa.php?id=<?php echo $data['id'] ?>">Tambah Obat</a>
                 </td>
             </tr>
             <?php
@@ -269,13 +270,13 @@ if (isset($_POST['simpan'])) {
     $id_dokter = $_POST['id_dokter'];
     $tgl_periksa = $_POST['tgl_periksa'];
     $catatan = $_POST['catatan'];
-    $obat = $_POST['obat'];
+
 
     if (!isset($_GET['id'])) {
-        $query = "INSERT INTO periksa (id_pasien, id_dokter, tgl_periksa, catatan, obat)
-            VALUES ('$id_pasien', '$id_dokter', '$tgl_periksa', '$catatan', '$obat')";
+        $query = "INSERT INTO periksa (id_pasien, id_dokter, tgl_periksa, catatan)
+            VALUES ('$id_pasien', '$id_dokter', '$tgl_periksa', '$catatan')";
     } else {
-        $query = "UPDATE `periksa` SET `id_pasien` = '$id_pasien', `id_dokter` = '$id_dokter', `tgl_periksa` = '$tgl_periksa', `catatan` = '$catatan', `obat` = '$obat'  WHERE `id` = '" . $_GET['id'] . "'";
+        $query = "UPDATE `periksa` SET `id_pasien` = '$id_pasien', `id_dokter` = '$id_dokter', `tgl_periksa` = '$tgl_periksa', `catatan` = '$catatan'  WHERE `id` = '" . $_GET['id'] . "'";
     }
     $result = mysqli_query($mysqli, $query);
     echo "<script> 

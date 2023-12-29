@@ -141,6 +141,7 @@ if (isset($_GET['id'])) {
                 </li>
             </ul>
         </div>
+        
         <!-- Add the "Logout" button to the top-right -->
         <?php
         session_start();
